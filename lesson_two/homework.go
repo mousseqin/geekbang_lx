@@ -40,7 +40,6 @@ func (s Set) Keys() []string {
 
 func (s Set) Contains(key string) bool {
 	flag := false
-
 	if s.m[key] {
 		flag = true
 	}

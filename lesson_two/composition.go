@@ -2,10 +2,6 @@ package main
 
 import "fmt"
 
-func main() {
-
-}
-
 // Swimming 会游泳的
 type Swimming interface {
 	Swim()
@@ -24,12 +20,7 @@ type Base struct {
 type Concrete1 struct {
 	Base
 }
-
-type Concrete2 struct {
-	*Base
-}
-
-func (c Concrete1) SayHello() {
+func (c *Concrete1) SayHelloZh() {
 	// c.Name 直接访问了Base的Name字段
 	fmt.Printf("I am base and my name is: %s \n", c.Name)
 	// 这样也是可以的
@@ -39,6 +30,15 @@ func (c Concrete1) SayHello() {
 	c.Base.SayHello()
 }
 
-func (b *Base) SayHello() {
+func (b *Base) SayHelloZh() {
 	fmt.Printf("I am base and my name is: %s \n", b.Name)
+}
+
+func main() {
+	var c Concrete1
+	c.Name = "test_name"
+
+	c.SayHelloZh()
+
+
 }

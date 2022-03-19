@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"htdocs/geekbang_lx/pkg/v2"
 	"io"
 	"net/http"
 )
