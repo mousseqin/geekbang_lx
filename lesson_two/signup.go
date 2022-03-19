@@ -3,14 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
 )
 
 // 在没有 context 抽象的情况下，是长这样的
 func SignUpWithoutContext(w http.ResponseWriter, r *http.Request) {
 	req := &signUpReq{}
-	body, err := io.ReadAll(r.Body)
+	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "read body failed: %v", err)
 		// 要返回掉，不然就会继续执行后面的代码
