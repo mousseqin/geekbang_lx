@@ -1,7 +1,20 @@
 package main
 
-//import "github.com/pkg/errors"
+import (
+	"io"
+	"log"
+)
 
 func main(){
-	//errors.Wrap(err, "read failed")
+	//var e error
+	//errors.Wrap(e, "read failed")
+}
+
+func Write(w io.Writer,buf []byte) error {
+	_ , err := w.Write(buf)
+	if err != nil {
+		log.Println("test success",err)
+		return err
+	}
+	return nil
 }
