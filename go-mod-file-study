@@ -1,0 +1,25 @@
+go常用指令
+go get
+go get用于拉取新的依赖(以下例子内的[module-path]是依赖的地址)
+
+go get [module-path]@latest 拉取最新的版本(优先择取 tag)
+go get [module-path]@master 拉取 master 分支的最新 commit
+go get [module-path]@v1.1.1 拉取 tag 为 v1.1.1 的 commit
+go get [module-path]@123abc 拉取 hash 为 123abc 的 commit，最终会被转换为 v1.1.1
+go get -u 更新所有依赖
+go mod
+go mod download 下载 go.mod 文件内的所有依赖
+go mod tidy 整理现有依赖
+go mod graph 查看现有的依赖结构
+go mod init [module-path] 生成 go.mod 文件 (Go 1.13 中唯一一个可以生成 go.mod 文件的子命令)
+
+go.mod文件解析
+执行go mod init [module-path]后, 会在执行指令的路径多了个go.mod文件
+
+module：当前项目的模块路径。
+go：预期的 Go 版本。
+require：设置一个特定的模块版本。
+exclude：用于从使用中排除一个特定的模块版本。
+replace：用于将一个模块版本替换为另外一个模块版本。
+其中 require后的// indirect说明这个依赖是非直接依赖
+

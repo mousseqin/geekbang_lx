@@ -1,7 +1,7 @@
 package main
 
-import "github.com/pkg/errors"
+//import "github.com/pkg/errors"
 
 func main(){
-	errors.Wrap()
+	//errors.Wrap(err, "read failed")
 }
