@@ -1,0 +1,20 @@
+第一周课程总结：
+
+概述：总结了ERROR的用法
+
+1.error are values,它就是一个普通的接口定义，还有不透明的错误处理
+
+2.减少HANDING ERROR,也就是 IF ERR != NIL这一类的判断，
+  尽量使用WARP ERROR往上抛上下文，并且一个ERROR只处理一次（要么降级，要么直接返回）
+
+4.一些ERROR的用法，比如哨兵ERROR,TYPE ERROR等
+
+5.git/pkg/errors包的使用处理方法
+
+6.GO语言1.13后，可以使用fmt.ERRORF(st string,name,err)来处理ERROR
+
+7.了解ERROR中IS和AS的用法
+
+8.了解GO2.0关于ERROR的改进
+
+9.预习下一周课程--GO的并发
