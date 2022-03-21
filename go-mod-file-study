@@ -7,6 +7,7 @@ go get [module-path]@master 拉取 master 分支的最新 commit
 go get [module-path]@v1.1.1 拉取 tag 为 v1.1.1 的 commit
 go get [module-path]@123abc 拉取 hash 为 123abc 的 commit，最终会被转换为 v1.1.1
 go get -u 更新所有依赖
+
 go mod
 go mod download 下载 go.mod 文件内的所有依赖
 go mod tidy 整理现有依赖
