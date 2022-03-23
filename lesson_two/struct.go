@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	// duck1 是 *ToyDuck
 	duck1 := &ToyDuck{}
-	duck1.Color = "黑色"  // 给一个默认的颜色
+	duck1.Color = "黑色" // 给一个默认的颜色
 	duck1.Swim()
 
 	//duck2 := ToyDuck{}
@@ -51,5 +51,3 @@ type ToyDuck struct {
 func (t *ToyDuck) Swim() {
 	fmt.Printf("我是%s的鸭子，%d元一只\n", t.Color, t.Price)
 }
-
-

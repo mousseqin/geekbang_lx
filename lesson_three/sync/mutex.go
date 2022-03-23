@@ -4,13 +4,14 @@ import "sync"
 
 var mutex sync.Mutex
 var rwMutex sync.RWMutex
+
 func Mutex() {
 	mutex.Lock()
 	defer mutex.Unlock() // defer 可以防止PANIC错误
 	// 你的代码
 }
 
-func RwMutex()  {
+func RwMutex() {
 	// 加读锁
 	rwMutex.RLock()
 	defer rwMutex.RUnlock()
@@ -21,7 +22,7 @@ func RwMutex()  {
 }
 
 // 不可重入例子
-func Failed1()  {
+func Failed1() {
 	mutex.Lock()
 	defer mutex.Unlock()
 
@@ -32,7 +33,7 @@ func Failed1()  {
 }
 
 // 不可升级
-func Failed2()  {
+func Failed2() {
 	rwMutex.RLock()
 	defer rwMutex.RUnlock()
 
@@ -42,6 +43,6 @@ func Failed2()  {
 	defer mutex.Unlock()
 }
 
-func  main(){
+func main() {
 
 }

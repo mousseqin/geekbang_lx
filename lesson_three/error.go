@@ -6,22 +6,21 @@ import (
 )
 
 type MyError struct {
-
 }
 
 func (e *MyError) Error() string {
 	return "this is my error"
 }
 
-func main(){
-	var e error =  &MyError{}
+func main() {
+	var e error = &MyError{}
 	s := e.Error()
 	fmt.Println(s)
 
 	ErrorsPkg()
 }
 
-func ErrorsPkg()  {
+func ErrorsPkg() {
 	err := &MyError{}
 	// 使用 %w 占位符，返回的是一个新错误
 	// wrappedErr 是一个新类型，fmt.wrapError

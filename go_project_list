@@ -1,0 +1,54 @@
+https://github.com/gwuhaolin/livego
+这是一个使用Go语言写的直播服务器，支持HLS、RTMP、HTTP-FLV协议，编码常用的H264都支持。
+视频封装通过FLV和TS，使用也非常简单。
+
+https://github.com/photoprism/photoprism
+一个开源的照片管理工具，最大的亮点是使用 Google TensorFlow机器学习自动标记和分类，
+而且你可以在浏览器中直接查看你的照片，如果你有自己的群辉路由，或者其他，
+部署上这套工具，就可以很方便的在家里共享和浏览照片了。
+
+https://github.com/kubernetes/kubernetes
+不提了，大家都知道，一如既往的坚挺。
+
+https://github.com/FiloSottile/mkcert
+零配置的证书生成工具，可以很方便的生成本地信任的证书，很简单。
+
+https://github.com/hashicorp/terraform
+IT基础架构自动化编排工具，运维的好帮手。现在它又有一个竞争对手，就是https://github.com/pulumi/pulumi。
+
+https://github.com/tal-tech/go-zero
+一个集成了各种工程实践的 web 和 rpc 框架。
+通过弹性设计保障了大并发服务端的稳定性，经受了充分的实战检验。
+
+https://github.com/gohugoio/hugo
+一个静态网站构建工具，功能强大，速度快，我的博客
+
+https://www.flysnow.org/
+就是用这个工具构建的，直接托管在CDN就可以，都不用买服务器。
+
+https://github.com/avelino/awesome-go
+精选了Go语言实现的软件、工具、框架、库的列表。并且也分好类别了，
+如果你正在想找某种需要的库，可以从这里逛逛。
+
+https://github.com/hashicorp/vault
+这是一个集中管理密码、证书的工具，通过HTTP API 对外提供统一的访问入口，并且有审计和日志功能。
+
+https://github.com/hashicorp/consul
+一个服务发现与配置的工具，用于微服务架构。
+注意hashicorp这个组织，他们已经有3个项目上榜了，非常NB的一个组织。
+
+https://github.com/prometheus/prometheus
+恩，普罗米修斯，一个很NB的监控系统。
+
+https://github.com/ehang-io/nps
+一款轻量级、高性能、功能强大的内网穿透代理服务器。
+支持tcp、udp、socks5、http等几乎所有流量转发，可用来访问内网网站、本地支付接口调试、ssh访问、远程桌面，
+内网dns解析、内网socks5代理等等。国人写的，推荐下。
+
+https://github.com/harvester/harvester
+构建在K8S之上超融合基础架构软件，总的Star还不高，最近开始飙升，可能是个潜力项目。
+
+https://github.com/traefik/traefik
+一个反向代理、支持负载均衡的工具。
+Traefik与现有的基础设施组件（Docker、Swarm mode、Kubernetes、Marathon、Conson、Etcd、Rancher、Amazon ECS等）集成，
+并自动动态地进行自我配置，使用很方便。

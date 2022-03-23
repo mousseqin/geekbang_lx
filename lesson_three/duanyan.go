@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // main 练习断言
-func main(){
+func main() {
 	//var v interface{}
 	//
 	//r := rand.New(rand.NewSource(time.Now().UnixNano()))

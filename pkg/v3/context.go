@@ -2,18 +2,18 @@ package webv3
 
 import (
 	"encoding/json"
-	"io"
+	"io/ioutil"
 	"net/http"
 )
 
 type Context struct {
-	W http.ResponseWriter
-	R *http.Request
+	W          http.ResponseWriter
+	R          *http.Request
 	PathParams map[string]string
 }
 
 func (c *Context) ReadJson(data interface{}) error {
-	body, err := io.ReadAll(c.R.Body)
+	body, err := ioutil.ReadAll(c.R.Body)
 	if err != nil {
 		return err
 	}

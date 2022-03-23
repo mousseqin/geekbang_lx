@@ -5,12 +5,12 @@ import (
 	"net/http"
 )
 
-func handler(w http.ResponseWriter,r *http.Request) {
-	fmt.Fprintf(w, "Hi there,I love %s!",r.URL.Path[1:])
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hi there,I love %s!", r.URL.Path[1:])
 }
 
-func user(w http.ResponseWriter,r *http.Request) {
-	fmt.Fprintf(w, "Hi there,user%s!",r.URL.Path[1:])
+func user(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hi there,user%s!", r.URL.Path[1:])
 }
 
 func main() {

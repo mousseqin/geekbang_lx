@@ -36,10 +36,10 @@ func BuildCloseServerHook(servers ...Server) Hook {
 			doneCh <- struct{}{}
 		}()
 		select {
-		case <- ctx.Done():
+		case <-ctx.Done():
 			fmt.Printf("closing servers timeout \n")
 			return ErrorHookTimeout
-		case <- doneCh:
+		case <-doneCh:
 			fmt.Printf("close all servers \n")
 			return nil
 		}

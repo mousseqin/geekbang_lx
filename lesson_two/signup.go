@@ -35,7 +35,7 @@ func SignUpWithoutWrite(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		resp := &commonResponse{
 			BizCode: 4, // 假如说我们这个代表输入参数错误
-			Msg: fmt.Sprintf("invalid request: %v", err),
+			Msg:     fmt.Sprintf("invalid request: %v", err),
 		}
 		respBytes, _ := json.Marshal(resp)
 		fmt.Fprint(w, string(respBytes))
@@ -46,13 +46,13 @@ func SignUpWithoutWrite(w http.ResponseWriter, r *http.Request) {
 }
 
 type signUpReq struct {
-	Email string `json:"email"`
-	Password string `json:"password"`
+	Email             string `json:"email"`
+	Password          string `json:"password"`
 	ConfirmedPassword string `json:"confirmed_password"`
 }
 
 type commonResponse struct {
-	BizCode int `json:"biz_code"`
-	Msg string `json:"msg"`
-	Data interface{} `json:"data"`
+	BizCode int         `json:"biz_code"`
+	Msg     string      `json:"msg"`
+	Data    interface{} `json:"data"`
 }

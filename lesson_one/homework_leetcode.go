@@ -1,6 +1,6 @@
 package main
 
-func main(){
+func main() {
 
 }
 
@@ -10,10 +10,10 @@ func main(){
 // 你可以按任意顺序返回答案。
 func twoSum(nums []int, target int) []int {
 	len := len(nums)
-	for i , v := range nums{
-		for j:=i+1;j<len;j++{
-			if nums[j] == target - v {
-				return []int{i,j}
+	for i, v := range nums {
+		for j := i + 1; j < len; j++ {
+			if nums[j] == target-v {
+				return []int{i, j}
 			}
 		}
 	}

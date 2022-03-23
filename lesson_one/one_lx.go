@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 
 	// fmt
 	//name := "mousse"
@@ -16,15 +16,15 @@ func main(){
 func replaceHolder() {
 	u := &user{
 		Name: "Tom",
-		Age: 17,
+		Age:  17,
 	}
-	fmt.Printf("v => %v \n", u)     // echo     v => &{Tom 17}
-	fmt.Printf("+v => %+v \n", u)   // echo     &{Name:Tom Age:17}
-	fmt.Printf("#v => %#v \n", u)   // echo     &main.user{Name:"Tom", Age:17}
-	fmt.Printf("T => %T \n", u)     // echo     *main.user
+	fmt.Printf("v => %v \n", u)   // echo     v => &{Tom 17}
+	fmt.Printf("+v => %+v \n", u) // echo     &{Name:Tom Age:17}
+	fmt.Printf("#v => %#v \n", u) // echo     &main.user{Name:"Tom", Age:17}
+	fmt.Printf("T => %T \n", u)   // echo     *main.user
 }
 
 type user struct {
 	Name string
-	Age int
+	Age  int
 }

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type NwParent struct {}
+type NwParent struct{}
 
 func (p NwParent) Name() string {
 	return "Parent"
@@ -13,7 +13,7 @@ func (p NwParent) SayHello() {
 }
 
 type NwSon struct {
-	NwParent   // zuhe
+	NwParent // zuhe
 }
 
 // 定义了自己的 Name() 方法
@@ -21,7 +21,7 @@ func (s NwSon) Name() string {
 	return "Son"
 }
 
-func main(){
+func main() {
 	r := NwSon{
 		NwParent{},
 	}
@@ -31,7 +31,4 @@ func main(){
 	// 有重写的语言会输出：I am Son
 	r.SayHello()
 
-
 }
-
-

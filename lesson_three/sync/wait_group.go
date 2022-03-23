@@ -8,7 +8,7 @@ import (
 func main() {
 	res := 0
 	wg := sync.WaitGroup{}
-	wg.Add(10)  // 声明一个 sync.WaitGroup，然后通过 Add 方法设置计数器的值，需要跟踪多少个协程就设置多少
+	wg.Add(10) // 声明一个 sync.WaitGroup，然后通过 Add 方法设置计数器的值，需要跟踪多少个协程就设置多少
 	for i := 0; i < 10; i++ {
 		go func(val int) {
 			res += val

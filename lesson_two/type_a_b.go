@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 	fake := FakeFish{}
 
 	//fake.Swim()     // fake 无法调用原来 Fish 的方法，这一句会编译错误
@@ -28,7 +28,7 @@ type Fish struct {
 // 定义了一个新类型，注意是新类型
 type FakeFish Fish
 
-func (f FakeFish) FakeSwim(){
+func (f FakeFish) FakeSwim() {
 	fmt.Printf("我是山寨鱼，嘎嘎嘎\n")
 }
 

@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func main(){
+func main() {
 	i := 13
 	a := func() {
 		fmt.Printf("i is %d \n", i)

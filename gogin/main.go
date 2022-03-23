@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func main(){
-	r:=gin.Default()
+func main() {
+	r := gin.Default()
 
 	r.GET("/list", listUser)
 	r.GET("/users/:id", getUser)
@@ -16,8 +16,8 @@ func main(){
 	r.Run(":8081")
 }
 
-func listUser(c *gin.Context)  {
-	c.JSON(200,users)
+func listUser(c *gin.Context) {
+	c.JSON(200, users)
 }
 
 func getUser(c *gin.Context) {
@@ -46,7 +46,7 @@ func createUser(c *gin.Context) {
 	if name != "" {
 		u := User{ID: len(users) + 1, Name: name}
 		users = append(users, u)
-		c.JSON(http.StatusCreated,u)
+		c.JSON(http.StatusCreated, u)
 	} else {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "请输入用户名称",
@@ -55,13 +55,13 @@ func createUser(c *gin.Context) {
 }
 
 var users = []User{
-	{ID: 1,Name: "张三"},
-	{ID: 2,Name: "李四"},
-	{ID: 3,Name: "王五"},
+	{ID: 1, Name: "张三"},
+	{ID: 2, Name: "李四"},
+	{ID: 3, Name: "王五"},
 }
 
 //用户
 type User struct {
-	ID int
+	ID   int
 	Name string
 }

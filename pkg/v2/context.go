@@ -2,7 +2,7 @@ package webv2
 
 import (
 	"encoding/json"
-	"io"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -12,7 +12,7 @@ type Context struct {
 }
 
 func (c *Context) ReadJson(data interface{}) error {
-	body, err := io.ReadAll(c.R.Body)
+	body, err := ioutil.ReadAll(c.R.Body)
 	if err != nil {
 		return err
 	}

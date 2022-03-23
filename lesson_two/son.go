@@ -11,7 +11,6 @@ func main() {
 }
 
 type Parent struct {
-
 }
 
 func (p Parent) SayHello() {
@@ -30,4 +29,3 @@ type Son struct {
 func (s Son) Name() string {
 	return "Son"
 }
-

@@ -12,7 +12,6 @@ type Duck interface {
 	Swimming
 }
 
-
 type Base struct {
 	Name string
 }
@@ -20,6 +19,7 @@ type Base struct {
 type Concrete1 struct {
 	Base
 }
+
 func (c *Concrete1) SayHelloZh() {
 	// c.Name 直接访问了Base的Name字段
 	fmt.Printf("I am base and my name is: %s \n", c.Name)
@@ -39,6 +39,5 @@ func main() {
 	c.Name = "test_name"
 
 	c.SayHelloZh()
-
 
 }

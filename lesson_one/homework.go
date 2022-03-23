@@ -27,8 +27,8 @@ func main() {
 }
 
 func Add(s []int, index int, value int) []int {
-	s = append(s,value)
-	copy(s[index+1:],s[index:])
+	s = append(s, value)
+	copy(s[index+1:], s[index:])
 	s[index] = value
 	return s
 }
@@ -36,6 +36,6 @@ func Add(s []int, index int, value int) []int {
 func Delete(s []int, index int) []int {
 	f := s[:index]
 	b := s[index+1:]
-	s = append(f,b...)
+	s = append(f, b...)
 	return s
 }

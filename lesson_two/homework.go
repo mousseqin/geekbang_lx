@@ -32,8 +32,8 @@ func (s Set) Put(key string) {
 func (s Set) Keys() []string {
 	fmt.Println(s.m)
 	ss := []string{""}
-	for k,_ :=  range s.m {
-		ss = append(ss,k)
+	for k, _ := range s.m {
+		ss = append(ss, k)
 	}
 	return ss
 }
@@ -50,7 +50,7 @@ func (s Set) Contains(key string) bool {
 func (s Set) Remove(key string) {
 	f := s.Contains(key)
 	if f {
-		delete(s.m,key)
+		delete(s.m, key)
 	}
 }
 func (s Set) PutIfAbsent(key string) (old string, absent bool) {
@@ -64,7 +64,7 @@ func (s Set) PutIfAbsent(key string) (old string, absent bool) {
 	return
 }
 
-func main(){
+func main() {
 	var s Set
 	s.m = make(map[string]bool)
 	s.m["default_key"] = true
@@ -76,8 +76,8 @@ func main(){
 	s.Remove("default_key2")
 	s.Keys()
 
-	o,f := s.PutIfAbsent("test_key")
-	println(o,f)
+	o, f := s.PutIfAbsent("test_key")
+	println(o, f)
 
 	s.Keys()
 }

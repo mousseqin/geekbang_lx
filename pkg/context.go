@@ -8,8 +8,8 @@ import (
 )
 
 type Context struct {
-	W http.ResponseWriter
-	R *http.Request
+	W          http.ResponseWriter
+	R          *http.Request
 	PathParams map[string]string
 }
 
@@ -59,8 +59,7 @@ func NewContext(w http.ResponseWriter, r *http.Request) *Context {
 
 func newContext() *Context {
 	fmt.Println("create new context")
-	return &Context{
-	}
+	return &Context{}
 }
 
 func (c *Context) Reset(w http.ResponseWriter, r *http.Request) {

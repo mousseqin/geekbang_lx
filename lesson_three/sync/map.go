@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func main(){
+func main() {
 	m := sync.Map{}
 	m.Store("cat", "Tom")
 	m.Store("mouse", "Jerry")

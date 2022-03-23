@@ -39,6 +39,5 @@ func main() {
 	var c concrete1
 	c.Name = "base_name" // 通过组合，从concrete1结构体中访问base中的NAME属性
 
-
 	c.SayHello()
 }
