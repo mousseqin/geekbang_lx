@@ -10,7 +10,6 @@ func main() {
 	atomic.AddInt32(&value,10)
 	nv := atomic.LoadInt32(&value)
 	fmt.Println(nv)  // echo 10
-
 	// 如果之前的值是10，那么就设置为新的值 20
 	swapped := atomic.CompareAndSwapInt32(&value,10,20)
 	// 输出 true
