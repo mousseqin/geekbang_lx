@@ -1,4 +1,4 @@
-package workgroup
+package main
 
 import (
 	"errors"

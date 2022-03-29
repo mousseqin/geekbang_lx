@@ -1,4 +1,4 @@
-package workgroup
+package main
 
 // Server 服务器创建用于取消执行的函数
 // 传入的第一个函数应该阻塞
@@ -26,3 +26,5 @@ func Server( serve func() error,shutdown func() error ) RunFunc {
 		}
 	}
 }
+
+

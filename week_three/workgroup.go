@@ -1,5 +1,5 @@
 // 包工作组为相关的goroutines组提供同步
-package workgroup
+package main
 
 // RunFunc 在它自己的goroutine中与其他相关函数一起执行
 // 传递给RunFunc的通道的关闭应该触发返回
