@@ -19,6 +19,25 @@ type mergeCtx struct {
 	cancelOnce	sync.Once
 }
 
+// Merge merges two contexts into one.
+func Merge(parent1, parent2 context.Context) (context.Context, context.CancelFunc) {
+	mc := &mergeCtx{
+		parent1:  parent1,
+		parent2:  parent2,
+		done:     make(chan struct{}),
+		cancelCh: make(chan struct{}),
+	}
+	select {
+	case <-parent1.Done():
+		_ = mc.finish(parent1.Err())
+	case <-parent2.Done():
+		_ = mc.finish(parent2.Err())
+	default:
+		go mc.wait()
+	}
+	return mc, mc.cancel
+}
+
 func (mc *mergeCtx) finish(err error) error {
 	mc.doneOnce.Do(func(){
 		mc.doneErr = err
