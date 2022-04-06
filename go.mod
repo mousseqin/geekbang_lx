@@ -4,6 +4,8 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kratos/kratos/v2 v2.2.1
 	github.com/go-playground/validator/v10 v10.10.1 // indirect
+	github.com/golang/mock v1.6.0 // indirect
+	github.com/google/uuid v1.3.0
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
