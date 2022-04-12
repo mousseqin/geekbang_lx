@@ -4,13 +4,12 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kratos/kratos/v2 v2.2.1
 	github.com/go-playground/validator/v10 v10.10.1 // indirect
-	github.com/golang/mock v1.6.0 // indirect
 	github.com/google/uuid v1.3.0
+	github.com/google/wire v0.5.0
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/mousseqin/week4_homework v0.0.0-20220407053629-cd7b168eb1c6 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.7.1
 	github.com/ugorji/go v1.2.7 // indirect
