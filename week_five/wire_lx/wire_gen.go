@@ -7,12 +7,12 @@ package wire_lx
 
 // Injectors from wire.go:
 
-func InitializeEvent() (Event, error) {
-	message := NewMessage()
-	greeter := NewGreeter(message)
-	event, err := NewEvent(greeter)
-	if err != nil {
-		return Event{}, err
-	}
-	return event, nil
-}
+//func InitializeEvent() (Event, error) {
+//	message := NewMessage()
+//	greeter := NewGreeter(message)
+//	event, err := NewEvent(greeter)
+//	if err != nil {
+//		return Event{}, err
+//	}
+//	return event, nil
+//}
