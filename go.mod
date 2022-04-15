@@ -12,6 +12,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/mousseqin/geekbang_go_homework v0.0.0-20220414130822-3ea22abbaad6 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/sgreben/testing-with-gomock v0.0.0-20180127205614-2990fb8af60c
 	github.com/smartystreets/goconvey v1.7.2
