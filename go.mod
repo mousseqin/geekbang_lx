@@ -5,6 +5,7 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-kratos/kratos/v2 v2.2.1
 	github.com/go-playground/validator/v10 v10.10.1 // indirect
+	github.com/goinggo/workpool v0.0.0-20160208222607-a68376913c9b // indirect
 	github.com/golang/mock v1.6.0
 	github.com/google/uuid v1.3.0
 	github.com/google/wire v0.5.0
