@@ -18,7 +18,7 @@ func (g *Group) Add(fn RunFunc) {
 	g.fns = append(g.fns, fn)
 }
 
-// Run在它自己的goroutine中执行通过Add注册的每个函数。
+// Run 在它自己的goroutine中执行通过Add注册的每个函数。
 // Run阻塞直到所有的函数都返回，然后从它们中返回第一个非零的错误（如果有的话）。
 // 第一个返回的函数将触发传递给每个函数的通道的关闭，反过来，它也应该返回。
 func (g *Group) Run() error {
@@ -27,7 +27,7 @@ func (g *Group) Run() error {
 	}
 
 	stop := make(chan struct{})
-	done := make(chan error,len(g.fns))
+	done := make(chan error, len(g.fns))
 	defer close(done)
 
 	for _, fn := range g.fns {
@@ -39,9 +39,9 @@ func (g *Group) Run() error {
 	var err error
 	for i := 0; i < cap(done); i++ {
 		if err == nil {
-			err = <- done
-		}else{
-			<- done
+			err = <-done
+		} else {
+			<-done
 		}
 		if i == 0 {
 			close(stop)
