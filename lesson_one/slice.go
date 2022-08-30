@@ -1,8 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/davecgh/go-spew/spew"
+)
 
 func main() {
+	s := make([]int, 1, 2)
+	s = append(s, 3, 4)
+	spew.Dump(cap(s))
 	//s1 := []int{1, 2, 3, 4} // 直接初始化了 4 个元素的切片
 	//fmt.Printf("s1: %v, len %d, cap: %d \n", s1, len(s1), cap(s1))
 
@@ -23,7 +29,7 @@ func main() {
 	//fmt.Printf("s3[2]: %d", s3[2])
 
 	//SubSlice()
-	ShareSlice()
+	//ShareSlice()
 }
 
 func SubSlice() {
