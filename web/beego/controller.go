@@ -7,7 +7,7 @@ type UserController struct {
 }
 
 func (c *UserController) GetUser() {
-	c.Ctx.WriteString("test123")
+	c.Ctx.WriteString("你好，我是大明")
 }
 
 func (c *UserController) CreateUser() {
@@ -17,6 +17,7 @@ func (c *UserController) CreateUser() {
 		c.Ctx.WriteString(err.Error())
 		return
 	}
+
 	_ = c.Ctx.JSONResp(u)
 }
 

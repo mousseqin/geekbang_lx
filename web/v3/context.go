@@ -1,6 +1,5 @@
 //go:build v3
-
-package v3
+package web
 
 import "net/http"
 

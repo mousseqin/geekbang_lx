@@ -1,5 +1,4 @@
 //go:build v1
-
 package v1
 
 import "net/http"
@@ -15,11 +14,10 @@ type Server interface {
 	// addRoute 注册一个路由
 	// method 是 HTTP 方法
 	// path 是路径，必须以 / 为开头
-	AddRoute(method, path string, handle HandleFunc)
+	AddRoute(method string, path string, handler HandleFunc)
 	// 我们并不采取这种设计方案
 	// addRoute(method string, path string, handlers... HandleFunc)
 }
-
 // 确保 HTTPServer 肯定实现了 Server 接口
 var _ Server = &HTTPServer{}
 
@@ -34,6 +32,8 @@ func (s *HTTPServer) ServeHTTP(writer http.ResponseWriter, request *http.Request
 	}
 	s.serve(ctx)
 }
+
+
 
 func (s *HTTPServer) Start(addr string) error {
 	return http.ListenAndServe(addr, s)
@@ -52,5 +52,6 @@ func (s *HTTPServer) AddRoute(method string, path string, handler HandleFunc) {
 }
 
 func (s *HTTPServer) serve(ctx *Context) {
-
+	
 }
+

@@ -1,6 +1,6 @@
 //go:build v2
 
-package v2
+package web
 
 import (
 	"fmt"
@@ -11,33 +11,33 @@ import (
 )
 
 func Test_router_AddRoute(t *testing.T) {
-	testRoutes := []struct {
+	testRoutes := []struct{
 		method string
-		path   string
-	}{
+		path string
+	} {
 		{
 			method: http.MethodGet,
-			path:   "/",
+			path: "/",
 		},
 		{
 			method: http.MethodGet,
-			path:   "/user",
+			path: "/user",
 		},
 		{
 			method: http.MethodGet,
-			path:   "/user/home",
+			path: "/user/home",
 		},
 		{
 			method: http.MethodGet,
-			path:   "/order/detail",
+			path: "/order/detail",
 		},
 		{
 			method: http.MethodPost,
-			path:   "/order/create",
+			path: "/order/create",
 		},
 		{
 			method: http.MethodPost,
-			path:   "/login",
+			path: "/login",
 		},
 	}
 
@@ -57,7 +57,7 @@ func Test_router_AddRoute(t *testing.T) {
 					"detail": {path: "detail", handler: mockHandler},
 				}},
 			}, handler: mockHandler},
-			http.MethodPost: {path: "/", children: map[string]*node{
+			http.MethodPost: { path: "/", children: map[string]*node{
 				"order": {path: "order", children: map[string]*node{
 					"create": {path: "create", handler: mockHandler},
 				}},
@@ -155,78 +155,78 @@ func (n *node) equal(y *node) (string, bool) {
 }
 
 func Test_router_findRoute(t *testing.T) {
-	testRoutes := []struct {
+	testRoutes := []struct{
 		method string
-		path   string
-	}{
+		path string
+	} {
 		{
 			method: http.MethodGet,
-			path:   "/",
+			path: "/",
 		},
 		{
 			method: http.MethodGet,
-			path:   "/user",
+			path: "/user",
 		},
 		{
 			method: http.MethodPost,
-			path:   "/order/create",
+			path: "/order/create",
 		},
 	}
 
 	mockHandler := func(ctx *Context) {}
 
 	testCases := []struct {
-		name     string
-		method   string
-		path     string
-		found    bool
+		name string
+		method string
+		path string
+		found bool
 		wantNode *node
 	}{
 		{
-			name:   "method not found",
+			name: "method not found",
 			method: http.MethodHead,
 		},
 		{
-			name:   "path not found",
+			name: "path not found",
 			method: http.MethodGet,
-			path:   "/abc",
+			path: "/abc",
 		},
 		{
-			name:   "root",
+			name: "root",
 			method: http.MethodGet,
-			path:   "/",
-			found:  true,
+			path: "/",
+			found: true,
 			wantNode: &node{
-				path:    "/",
+				path: "/",
 				handler: mockHandler,
 			},
 		},
 		{
-			name:   "user",
+			name: "user",
 			method: http.MethodGet,
-			path:   "/user",
-			found:  true,
+			path: "/user",
+			found: true,
 			wantNode: &node{
-				path:    "user",
+				path: "user",
 				handler: mockHandler,
 			},
 		},
 		{
-			name:   "no handler",
+			name: "no handler",
 			method: http.MethodPost,
-			path:   "/order",
-			found:  true,
+			path: "/order",
+			found: true,
 			wantNode: &node{
 				path: "order",
 			},
 		},
 		{
-			name:   "two layer",
+			name: "two layer",
 			method: http.MethodPost,
-			path:   "/order/create",
-			found:  true,
+			path: "/order/create",
+			found: true,
 			wantNode: &node{
-				path:    "create",
+				path: "create",
 				handler: mockHandler,
 			},
 		},

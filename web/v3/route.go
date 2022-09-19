@@ -1,6 +1,5 @@
 //go:build v3
-
-package v3
+package web
 
 import (
 	"fmt"
@@ -22,7 +21,7 @@ func newRouter() router {
 // addRoute 注册路由。
 // method 是 HTTP 方法
 // path 必须以 / 开始并且结尾不能有 /，中间也不允许有连续的 /
-func (r *router) addRouter(method, path string, handler HandleFunc) {
+func (r *router) addRoute(method string, path string, handler HandleFunc) {
 	if path == "" {
 		panic("web: 路由是空字符串")
 	}
@@ -30,17 +29,17 @@ func (r *router) addRouter(method, path string, handler HandleFunc) {
 		panic("web: 路由必须以 / 开头")
 	}
 
-	if path != "/" && path[len(path)-1] == '/' {
+	if path != "/" && path[len(path) - 1] == '/' {
 		panic("web: 路由不能以 / 结尾")
 	}
 
 	root, ok := r.trees[method]
+	// 这是一个全新的 HTTP 方法，创建根节点
 	if !ok {
 		// 创建根节点
 		root = &node{path: "/"}
 		r.trees[method] = root
 	}
-
 	if path == "/" {
 		if root.handler != nil {
 			panic("web: 路由冲突[/]")
@@ -65,11 +64,12 @@ func (r *router) addRouter(method, path string, handler HandleFunc) {
 
 // findRoute 查找对应的节点
 // 注意，返回的 node 内部 HandleFunc 不为 nil 才算是注册了路由
-func (r *router) findRouter(method, path string) (*node, bool) {
+func (r *router) findRoute(method string, path string) (*node, bool) {
 	root, ok := r.trees[method]
 	if !ok {
 		return nil, false
 	}
+
 	if path == "/" {
 		return root, true
 	}
@@ -82,6 +82,23 @@ func (r *router) findRouter(method, path string) (*node, bool) {
 		}
 	}
 	return root, true
+}
+
+// node 代表路由树的节点
+// 路由树的匹配顺序是：
+// 1. 静态完全匹配
+// 2. 通配符匹配
+// 这是不回溯匹配
+type node struct {
+	path string
+	// children 子节点
+	// 子节点的 path => node
+	children map[string]*node
+	// handler 命中路由之后执行的逻辑
+	handler HandleFunc
+
+	// 通配符 * 表达的节点，任意匹配
+	starChild *node
 }
 
 func (n *node) childOf(path string) (*node, bool) {
@@ -115,13 +132,3 @@ func (n *node) childOrCreate(path string) *node {
 	return child
 }
 
-type node struct {
-	path string
-	// children 子节点
-	// 子节点的 path => node
-	children map[string]*node
-	// handler 命中路由之后执行的逻辑
-	handler HandleFunc
-	// 通配符 * 表达的节点，任意匹配
-	starChild *node
-}

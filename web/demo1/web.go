@@ -1,4 +1,4 @@
-package demo1
+package demo
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 )
 
 func Start() {
-	var s Serve = &HTTPServer{}
+	var s Server = &HTTPServer{}
 	var h1 HandleFunc = func(context *Context) {
 		fmt.Println("步骤1")
 		time.Sleep(time.Second)
@@ -26,7 +26,7 @@ func Start() {
 	// s.AddRoutes(http.MethodPost, "/user")
 	// http.ListenAndServe(":8081", s)
 	// http.ListenAndServeTLS("4000", "xxx", "aaa", s)
-	_ = s.Start(":8082")
+	s.Start(":8082")
 }
 
 type Context struct {
@@ -36,11 +36,11 @@ type Context struct {
 
 type HandleFunc func(*Context)
 
-type Serve interface {
+type Server interface {
 	http.Handler
 	Start(addr string) error
 	// AddRoute 注册路由的核心抽象
-	AddRoute(method, path string, handle HandleFunc)
+	AddRoute(method, path string, handler HandleFunc)
 
 	// 不知道怎么调度 handlers
 	// 用户一个都不传
@@ -82,8 +82,15 @@ func (m *HTTPServer) Start(addr string) error {
 	// 你没办法在这里做点什么
 }
 
-func (m *HTTPServer) serve(ctx *Context) {
+type HTTPSServer struct {
+	// HTTPServer
+	Server
+	CertFile string
+	KeyFile  string
+}
 
+func (m *HTTPSServer) Start(addr string) error {
+	return http.ListenAndServeTLS(addr, m.CertFile, m.KeyFile, m)
 }
 
 func (m *HTTPServer) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
@@ -97,9 +104,6 @@ func (m *HTTPServer) ServeHTTP(writer http.ResponseWriter, request *http.Request
 	m.serve(ctx)
 }
 
-type HTTPSServe struct {
-	// HTTPServer
-	Serve
-	CertFile string
-	keyFile  string
+func (m *HTTPServer) serve(ctx *Context) {
+
 }

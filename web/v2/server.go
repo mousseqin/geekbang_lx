@@ -1,6 +1,6 @@
 //go:build v2
 
-package v2
+package web
 
 import "net/http"
 
@@ -19,7 +19,6 @@ type Server interface {
 	// 我们并不采取这种设计方案
 	// addRoute(method string, path string, handlers... HandleFunc)
 }
-
 // 确保 HTTPServer 肯定实现了 Server 接口
 var _ Server = &HTTPServer{}
 
@@ -33,12 +32,13 @@ func NewHTTPServer() *HTTPServer {
 	}
 }
 
+// ServeHTTP HTTPServer 处理请求的入口
 func (s *HTTPServer) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	ctx := &Context{
 		Req:  request,
 		Resp: writer,
 	}
-	s.server(ctx)
+	s.serve(ctx)
 }
 
 // Start 启动服务器
@@ -54,7 +54,7 @@ func (s *HTTPServer) Get(path string, handler HandleFunc) {
 	s.addRoute(http.MethodGet, path, handler)
 }
 
-func (s *HTTPServer) server(ctx *Context) {
+func (s *HTTPServer) serve(ctx *Context) {
 	n, ok := s.findRoute(ctx.Req.Method, ctx.Req.URL.Path)
 	if !ok || n.handler == nil {
 		ctx.Resp.WriteHeader(404)
@@ -63,3 +63,4 @@ func (s *HTTPServer) server(ctx *Context) {
 	}
 	n.handler(ctx)
 }
+
