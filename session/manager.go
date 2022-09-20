@@ -1,8 +1,6 @@
 package session
 
-import (
-	"geekbang_lx/web"
-)
+import "geekbang_lx/web"
 
 type Manager struct {
 	Store
@@ -16,7 +14,6 @@ func (m *Manager) GetSession(ctx *web.Context) (Session, error) {
 	if ctx.UserValues == nil {
 		ctx.UserValues = make(map[string]any, 1)
 	}
-
 	val, ok := ctx.UserValues[m.SessCtxKey]
 	if ok {
 		return val.(Session), nil
