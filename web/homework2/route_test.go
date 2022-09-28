@@ -522,10 +522,9 @@ func Test_findRoute_Middleware(t *testing.T) {
 			path:   "/a",
 		},
 		{
-			name:   "static, match",
-			method: http.MethodGet,
-			path:   "/a/c",
-			// /a/*.html
+			name:     "static, match",
+			method:   http.MethodGet,
+			path:     "/a/c",
 			wantResp: "a*",
 		},
 		{

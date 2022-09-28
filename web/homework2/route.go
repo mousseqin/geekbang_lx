@@ -99,24 +99,26 @@ func (r *router) findRoute(method string, path string) (*matchInfo, bool) {
 }
 
 func (r *router) findMdls(root *node, segs []string) []Middleware {
-	var m []Middleware
-	//var a Middleware
-	//var b Middleware
-	//m = append(m, a, b)
-	//n := root.childrenOf(segs)
-	for _, s := range segs {
-		node := root.childrenOf(s)
-		for _, n := range node {
-			if n.starChild != nil {
-				m = append(m, func(next HandleFunc) HandleFunc {
-					return func(ctx *Context) {
-
-					}
-				})
+	queue := []*node{root}
+	res := make([]Middleware, 0, 16)
+	for i := 0; i < len(segs); i++ {
+		seg := segs[i]
+		var children []*node
+		for _, cur := range queue {
+			if len(cur.mdls) > 0 {
+				res = append(res, cur.mdls...)
 			}
+			children = append(children, cur.childrenOf(seg)...)
+		}
+		queue = children
+	}
+
+	for _, cur := range queue {
+		if len(cur.mdls) > 0 {
+			res = append(res, cur.mdls...)
 		}
 	}
-	return m
+	return res
 }
 
 func (n *node) childrenOf(path string) []*node {
