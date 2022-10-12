@@ -6,25 +6,43 @@ type Column struct {
 
 func (c Column) expr() {}
 
-type Value struct {
+type value struct {
 	val any
 }
 
-func (c Value) expr() {}
+func (c value) expr() {}
 
-func valueOf(v any) Value {
-	return Value{
-		val: v,
+func valueOf(val any) value {
+	return value{
+		val: val,
 	}
 }
 
-func C(n string) Column {
-	return Column{
-		name: n,
-	}
+func C(name string) Column {
+	return Column{name: name}
 }
 
 // EQ 例如 C("id").Eq(12)
-func (c Column) EQ() {
+func (c Column) EQ(arg any) Predicate {
+	return Predicate{
+		left:  c,
+		op:    opEQ,
+		right: exprOf(arg),
+	}
+}
 
+func (c Column) LT(arg any) Predicate {
+	return Predicate{
+		left:  c,
+		op:    opLT,
+		right: exprOf(arg),
+	}
+}
+
+func (c Column) GT(arg any) Predicate {
+	return Predicate{
+		left:  c,
+		op:    opGT,
+		right: exprOf(arg),
+	}
 }

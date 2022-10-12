@@ -3,6 +3,7 @@ package v3
 // op 代表操作符
 type op string
 
+// 后面可以每次支持新的操作符就加一个
 const (
 	opEQ  = "="
 	opLT  = "<"
@@ -27,7 +28,7 @@ func exprOf(e any) Expression {
 	case Expression:
 		return exp
 	default:
-		return valueOf(e)
+		return valueOf(exp)
 	}
 }
 
@@ -56,10 +57,10 @@ func (p Predicate) And(r Predicate) Predicate {
 	}
 }
 
-func (p Predicate) Or(r Predicate) Predicate {
+func (p Predicate) Or(right Predicate) Predicate {
 	return Predicate{
 		left:  p,
 		op:    opOR,
-		right: r,
+		right: right,
 	}
 }
