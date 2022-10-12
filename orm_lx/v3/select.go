@@ -36,7 +36,7 @@ func (s *Selector[T]) Build() (*Query, error) {
 		// 类似这种可有可无的部分，都要在前面加一个空格
 		s.sb.WriteString(" WHERE ")
 		p := s.where[0]
-		for i := 0; i < len(s.where); i++ {
+		for i := 1; i < len(s.where); i++ {
 			p = p.And(s.where[i])
 		}
 		if err := s.buildExpression(p); err != nil {
